@@ -3,36 +3,33 @@ version: '3.8'
 services:
 
   node-app:
-    build:
-      context: ./node
-      dockerfile: Dockerfile
+    build: ./node
+    image: riyadrb/node-app
     ports:
       - '3000:3000'
     volumes:
-      - node-app-data:/app/data
+      - node-data:/app/data
   
   python-app:
-    build:
-      context: ./python-app
-      dockerfile: Dockerfile
+    build: ./python-app
+    image: riyadrb/python-app
     ports:
-      - '4000:4000'
+      - '8000:8000'
     volumes:
-      - python-app-data:/app/data
+      - python-data:/app/data
 
   java-app:
-    build:
-      context: ./demo
-      dockerfile: Dockerfile
+    build: ./demo
+    image: riyadrb/maven
     ports:
       - '8080:8080'
     volumes:
-      - java-app-data:/app/data
+      - java-data:/app/data
 
 volumes:
-  node-app-data:
-  python-app-data:
-  java-app-data:
+  node-data:
+  python-data:
+  java-data:
 
 
 
